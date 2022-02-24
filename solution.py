@@ -4,7 +4,7 @@ from socket import *
 def smtp_client(port=1025, mailserver='127.0.0.1'):
     msg = "\r\n My message"
     endmsg = "\r\n.\r\n"
-    printToggle = 0
+    printToggle = 1
 
     # Choose a mail server (e.g. Google mail server) if you want to verify the script beyond GradeScope
     # Create socket called clientSocket and establish a TCP connection with mailserver and port
@@ -56,11 +56,6 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Fill in start
     sendData = "DATA\r\n"
     clientSocket.send(sendData.encode())
-    recv3 = clientSocket.recv(1024).decode()
-    if printToggle == 1:
-        print(recv3)
-        if recv3[:3] != '354':
-            print('354 reply not received from server.')
     # Fill in end
 
     # Send message data.
